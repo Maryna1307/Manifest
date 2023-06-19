@@ -1,5 +1,6 @@
 @import 'normalize';
 @import 'mixins';
+@import 'vars';
 
 * {
     box-sizing: border-box;
@@ -26,6 +27,7 @@ html, body {
 .container {
     max-width: 1170px;
     margin: 0 auto;
+    padding: 0 15px
 }
 
 .d-flex {
@@ -37,7 +39,8 @@ html, body {
 }
 
 .header {
-    padding: 40px 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
     position: relative;
 
     .nav {
@@ -84,7 +87,8 @@ html, body {
 }
 
 .banner {
-    padding: 100px 0 380px;
+    padding-top: 100px;
+    padding-bottom: 380px;
     background-image: url(../assets/img/bg-image.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -99,10 +103,6 @@ html, body {
         line-height: 1.33;
         color: #000000;
     }
-}
-
-.section {
-    margin-bottom: 90px;
 }
 
 .blog article:nth-of-type(1) {
@@ -128,7 +128,7 @@ html, body {
     @include flex(flex-start, center, 30px);
 
     &__descr {
-        max-width: 450px;
+        width: 50%;
     }
 
     &__suptitle, &__subtitle {
@@ -154,31 +154,72 @@ html, body {
         color: #000000;
     }
 
-    &__text img {
-        display: inline;
+    &__text span::after {
+        content: url(../assets/img/arrow.png);
+    }
+
+    &__image {
+        width: 50%;
+    }
+
+    &__img {
+        object-fit: cover;
+        width: 100%;
     }
 }
 
-.posts__header {
-    margin-bottom: 50px;
+.section {
+    margin-bottom: 90px;
+
+    &__title {
+        margin: 0;
+        font-family: 'Red Hat Display', sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: #000000;
+    }
+
+    &__header {
+        margin-bottom: 50px;
+    }
+
+    &__link {
+        padding: 5px 43px 5px 0;
+        background: none;
+        border: none;
+        letter-spacing: 0.1em;
+        color: #7B7B7B;
+        position: relative;
+    
+        &::after {
+            content: url(../assets/img/arrow.png);
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    &__link_grey {
+        padding: 13.5px 45px;
+        background: #565656;
+        letter-spacing: 0.1em;
+        color: #FFFFFF;
+    }
 }
 
-.title-3 {
-    margin: 0;
-    font-family: 'Red Hat Display', sans-serif;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: #000000;
+.link-wrapper {
+    text-align: center;
+    margin-top: 50px;
 }
 
-.posts-article {
+.article {
     width: 33%;
 
     &__img {
-        max-width: 370px;
+        max-width: 570px;
         margin-bottom: 25px;
     }
+
     &__image {
         object-fit: cover;
         width: 100%;
@@ -200,8 +241,100 @@ html, body {
         color: #000000;
     }
 
+    &_big {
+        width: 50%;
+    }
 }
 
+.d-flex_start {
+    align-items: flex-start;
+}
+
+.veronalabs {
+    &__title {
+        margin: 0;
+        max-width: 470px;
+        font-family: 'Red Hat Display', sans-serif;
+        font-size: 23px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: #000000;
+
+        & span::after {
+            content: url(../assets/img/arrow.png);
+            display: block;
+        }
+    }
+
+    &__descr {
+        max-width: 470px;
+    }
+
+    &__text {
+        font-size: 19px;
+    
+        &:first-of-type {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.footer {
+    padding-top: 70px;
+    padding-bottom: 30px;
+    background: #F4F4F4;
+
+    &__title {
+        margin: 0 0 30px;
+        font-family: 'Red Hat Display', sans-serif;
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 1.33;
+        color: #000000;
+    }
+
+    &__text {
+        letter-spacing: 0.1em;
+        color: #000000;
+
+        &:first-of-type {
+            margin-bottom: 15px;
+        }
+    }
+
+    .socials {
+        @include flex (flex-end, center, 23px);
+        list-style: none;
+    
+        &__link {
+            @include flex(center, center, 0);
+            width: 50px;
+            height: 50px;           
+            border: 1px solid #565656;
+
+            &:hover {
+                background: #565656;
+                border-color: #565656;
+
+                .socials__icon {
+                    fill: #fff;
+                }
+            }
+        }
+
+        &__icon {
+            fill: #565656;
+        }
+    }
+
+    &__copyright {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        color: #000000;
+    }
+}
 
 @media  screen and (max-width:992px) {
     .container {
@@ -300,8 +433,12 @@ html, body {
     .blog-article {
         gap: 20px;
 
-        &__img {
-            max-width: 340px;
+        &__image {
+            width: 100%;
+        }
+
+        &__descr {
+            width: 100%;
         }
 
         &__suptitle {
@@ -312,6 +449,63 @@ html, body {
             margin-bottom: 30px;
         }
     }
+
+    .flex {
+        flex-wrap: wrap;
+    }
+
+    .nowrap {
+        flex-wrap: nowrap;
+    }
+
+    .article {
+        width: 100%;
+    }
+
+    .article-tab {
+        @include flex(space-between, flex-start, 20px);
+
+        &:nth-of-type(2) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    .article__img {
+        margin-bottom: 0;
+        width: 50%;
+    }
+
+    .article__img_big {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .text-tab {
+        width: 50%;
+    }
+
+    .d-block {
+        display: block;
+    }
+
+    .veronalabs__title {
+        margin-bottom: 50px;
+    }
+
+    .veronalabs__descr {
+        text-align: end;
+        margin-left: auto;
+    }
+
+    .footer {
+        padding: 50px 0;
+    }
+
+    .footer__flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
 }
 
 @media  screen and (max-width:576px) {
@@ -321,6 +515,7 @@ html, body {
 
     .banner {
         padding: 70px 0 230px;
+        background-position-x: 48%;
 
         .title-1 {
             font-size: 30px;
@@ -341,6 +536,39 @@ html, body {
         &__img {
             max-width: 300px;
         }
+    }
+
+    .article-tab {
+        flex-wrap: wrap;
+    }
+
+    .article__img {
+        width: 100%;
+    }
+
+    .text-tab {
+        width: 100%;
+    }
+
+    .section__header {
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    .flex {
+        gap:  50px;
+    }
+
+    .nowrap {
+        flex-wrap: wrap;
+    }
+
+    .veronalabs__title {
+        margin-bottom: 35px;
+    }
+
+    .veronalabs__descr {
+        text-align: start;
     }
 }
 
