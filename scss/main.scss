@@ -27,7 +27,8 @@ html, body {
 .container {
     max-width: 1170px;
     margin: 0 auto;
-    padding: 0 15px
+    padding: 0 15px;
+    // background-color: red
 }
 
 .d-flex {
@@ -46,6 +47,7 @@ html, body {
     .nav {
         @include flex(space-between, center, 84px);
         position: relative;
+        padding-left: 155px;
 
         .burger {
             display: none;
@@ -84,6 +86,44 @@ html, body {
             opacity: 1;
         }
     }
+
+    .checkbox {
+        opacity: 0;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        right: 13px;
+    }
+    
+    
+    .search::after {
+        content: url(../assets/img/search.png);
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        bottom: 1px;
+        right: 13px;
+    }
+    
+    .search-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        position: relative;
+    }
+    
+    .search-input {
+    
+        border: none;
+        border-bottom: 1px solid #000000;
+        opacity: 0;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    .checkbox:checked ~ .search-input {
+        opacity: 1;
+    }
 }
 
 .banner {
@@ -103,6 +143,7 @@ html, body {
         line-height: 1.33;
         color: #000000;
     }
+
 }
 
 .blog article:nth-of-type(1) {
@@ -335,6 +376,9 @@ html, body {
         color: #000000;
     }
 }
+
+
+
 
 @media  screen and (max-width:992px) {
     .container {

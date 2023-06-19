@@ -286,6 +286,7 @@ html, body {
   align-items: center;
   gap: 84px;
   position: relative;
+  padding-left: 155px;
 }
 .header .nav .burger {
   display: none;
@@ -319,6 +320,37 @@ html, body {
   opacity: 0;
 }
 .header .menu__item:hover .menu__link::after {
+  opacity: 1;
+}
+.header .checkbox {
+  opacity: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  right: 13px;
+}
+.header .search::after {
+  content: url(../assets/img/search.png);
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  bottom: 1px;
+  right: 13px;
+}
+.header .search-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+}
+.header .search-input {
+  border: none;
+  border-bottom: 1px solid #000000;
+  opacity: 0;
+}
+.header .search-input:focus {
+  outline: none;
+}
+.header .checkbox:checked ~ .search-input {
   opacity: 1;
 }
 
