@@ -28,7 +28,6 @@ html, body {
     max-width: 1170px;
     margin: 0 auto;
     padding: 0 15px;
-    // background-color: red
 }
 
 .d-flex {
@@ -43,6 +42,10 @@ html, body {
     padding-top: 40px;
     padding-bottom: 40px;
     position: relative;
+
+    &__flex {
+        @include flex(none, center, 84px)
+    }
 
     .nav {
         @include flex(space-between, center, 84px);
@@ -99,9 +102,7 @@ html, body {
     .search::after {
         content: url(../assets/img/search.png);
         position: absolute;
-        right: 0;
         z-index: 1;
-        bottom: 1px;
         right: 13px;
     }
     
@@ -112,7 +113,6 @@ html, body {
     }
     
     .search-input {
-    
         border: none;
         border-bottom: 1px solid #000000;
         opacity: 0;
@@ -386,11 +386,16 @@ html, body {
     }
 
     .header {
-        padding: 20px 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
 
-        .nav {
+        &__flex {
             flex-direction: row-reverse;
             gap: 40px;
+        }
+
+        .nav {
+            padding-left: 0;
 
             .burger-img {
                 position: relative;
@@ -432,7 +437,8 @@ html, body {
             &__item {
                 width: 100%;
                 text-align: center;
-                padding: 10px 0;
+                padding-top: 10px;
+                padding-bottom: 10px;
                 border-bottom: 1px solid #565656;
                 
                 &:last-child {
@@ -462,7 +468,8 @@ html, body {
     }
 
     .banner {
-        padding: 30px 0 190px;
+        padding-top: 30px ;
+        padding-bottom: 190px;
 
         .title-1 {
             font-size: 36px;
@@ -542,7 +549,8 @@ html, body {
     }
 
     .footer {
-        padding: 50px 0;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 
     .footer__flex {
@@ -557,8 +565,15 @@ html, body {
         max-width: 300px;
     }
 
+    .header {
+        &__flex {
+            gap: 20px;
+        }
+    }
+
     .banner {
-        padding: 70px 0 230px;
+        padding-top: 70px;
+        padding-bottom: 230px;
         background-position-x: 48%;
 
         .title-1 {
@@ -613,6 +628,10 @@ html, body {
 
     .veronalabs__descr {
         text-align: start;
+    }
+
+    .search-input {
+        display: none;
     }
 }
 
